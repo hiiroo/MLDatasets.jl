@@ -9,6 +9,7 @@ DataDeps = "124859b0-ceae-595e-8997-d05f6a7a8dfe"
 FixedPointNumbers = "53c48c17-4a7d-5ca2-90c5-79b7896eea93"
 GZip = "92fee26a-97fe-5a0c-ad85-20a5f3185b63"
 Requires = "ae029012-a4dd-5104-9daa-d747884805df"
+Formatting = "59287772-0a20-5a39-b81b-1366585eb4c0"
 
 [compat]
 ColorTypes = "≥ 0.4.0"
