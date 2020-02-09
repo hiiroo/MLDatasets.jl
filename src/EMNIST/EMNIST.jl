@@ -26,10 +26,8 @@ http://yann.lecun.com/exdb/mnist/
 ## Utilities
 
 - [`MNIST.download`](@ref)
-# - [`MNIST.convert2features`](@ref)
-# - [`MNIST.convert2image`](@ref)
 """
-module MNIST
+module EMNIST
     using DataDeps
     using ColorTypes
     using Formatting
@@ -53,18 +51,12 @@ module MNIST
 
         download
 
-    const DEPTYPES = Dict{Symbol, String} = (
-        :balanced=>"balanced", 
-        :byclass=>"byclass", 
-        :bymerge=>"bymerge", 
-        :digits=>"digits", 
-        :letters=>"letters", 
-        :mnist=>"mnist")
+    const DEPTYPES = Dict{Symbol, String}(:balanced=>"balanced", :byclass=>"byclass", :bymerge=>"bymerge", :digits=>"digits", :letters=>"letters", :mnist=>"mnist")
     const DEPNAME = "EMNIST"
-    const TRAINIMAGES = FormatExpr("emnist-{}-train-images-idx3-ubyte.gz")
-    const TRAINLABELS = FormatExpr("emnist-{}-train-labels-idx1-ubyte.gz")
-    const TESTIMAGES  = FormatExpr("emnist-{}-test-images-idx3-ubyte.gz")
-    const TESTLABELS  = FormatExpr("emnist-{}-test-labels-idx1-ubyte.gz")
+    const TRAINIMAGES = FormatExpr("gzip/emnist-{}-train-images-idx3-ubyte.gz")
+    const TRAINLABELS = FormatExpr("gzip/emnist-{}-train-labels-idx1-ubyte.gz")
+    const TESTIMAGES  = FormatExpr("gzip/emnist-{}-test-images-idx3-ubyte.gz")
+    const TESTLABELS  = FormatExpr("gzip/emnist-{}-test-labels-idx1-ubyte.gz")
 
     """
         download([dir]; [i_accept_the_terms_of_use])
@@ -113,6 +105,7 @@ module MNIST
             dataset.
             """,
             "http://www.itl.nist.gov/iaui/vip/cs_links/EMNIST/gzip.zip",
+            "fb9bb67e33772a9cc0b895e4ecf36d2cf35be8b709693c3564cea2a019fcda8e",
             post_fetch_method=unpack
         ))
     end

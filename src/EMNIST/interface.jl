@@ -51,7 +51,7 @@
     $(download_docstring("EMNIST", DEPNAME))
 """
 function traintensor(::Type{T}, deptype, args...; dir = nothing) where T
-    path = datafile(DEPNAME, format(TRAINIMAGES, deptype), dir)
+    path = datafile(DEPNAME, format(TRAINIMAGES, DEPTYPES[deptype]), dir)
     images = Reader.readimages(path, args...)
     bytes_to_type(T, images)
 end
@@ -113,7 +113,7 @@ end
     $(download_docstring("MNIST", DEPNAME))
 """
 function testtensor(::Type{T}, deptype, args...; dir = nothing) where T
-    path = datafile(DEPNAME, format(TESTIMAGES, deptype), dir)
+    path = datafile(DEPNAME, format(TESTIMAGES, DEPTYPES[deptype]), dir)
     images = Reader.readimages(path, args...)
     bytes_to_type(T, images)
 end
@@ -152,12 +152,12 @@ end
     $(download_docstring("MNIST", DEPNAME))
 """
 function trainlabels(deptype, args...; dir = nothing)
-    path = datafile(DEPNAME, format(TRAINLABELS, deptype), dir)
+    path = datafile(DEPNAME, format(TRAINLABELS, DEPTYPES[deptype]), dir)
     Vector{Int}(Reader.readlabels(path, args...))
 end
 
 function trainlabels(index::Integer, deptype; dir = nothing)
-    path = datafile(DEPNAME, format(TRAINLABELS, deptype), dir)
+    path = datafile(DEPNAME, format(TRAINLABELS, DEPTYPES[deptype]), dir)
     Int(Reader.readlabels(path, index))
 end
 
@@ -191,12 +191,12 @@ end
     $(download_docstring("MNIST", DEPNAME))
 """
 function testlabels(deptype, args...; dir = nothing)
-    path = datafile(DEPNAME, format(TESTLABELS, deptype), dir)
+    path = datafile(DEPNAME, format(TESTLABELS, DEPTYPES[deptype]), dir)
     Vector{Int}(Reader.readlabels(path, args...))
 end
 
 function testlabels(index::Integer, deptype; dir = nothing)
-    path = datafile(DEPNAME, format(TESTLABELS, deptype), dir)
+    path = datafile(DEPNAME, format(TESTLABELS, DEPTYPES[deptype]), dir)
     Int(Reader.readlabels(path, index))
 end
 
